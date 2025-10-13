@@ -1,4 +1,4 @@
-const mysql= require('mysql');
+const mysql= require('mysql2');
 // Cadena de conexion = STRING ... "server=localhost;user=root; password= ;database=movietime"
 // Objeto de conexion = {host: 'localhost', user: 'root', password: '', database: 'movietime'}
 
