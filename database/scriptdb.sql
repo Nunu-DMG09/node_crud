@@ -1,0 +1,1 @@
+SELECT * FROM movietime.pelicula;
