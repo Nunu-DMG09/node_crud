@@ -1,0 +1,80 @@
+<!-- ...existing code... -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Movietime · Inicio</title>
+  <link rel="stylesheet" href="/public/css/estilos.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <div class="logo">MT</div>
+        <div>
+          <h1>Movietime</h1>
+          <div style="font-size:12px;color:var(--muted)">Gestión de carreras · Demo</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="/">Inicio</a>
+        <a href="/create">Crear</a>
+        <a href="/edicion">Editar</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-card">
+        <h2>Bienvenido a Movietime</h2>
+        <p>Interfaz moderna, ligera y accesible para gestionar tus carreras. Usa los botones para navegar y probar las vistas de creación/edición.</p>
+        <div class="actions">
+          <a class="btn" href="/create">Crear nueva carrera</a>
+          <a class="btn ghost" href="/edicion">Ver editor</a>
+        </div>
+
+        <div class="grid" aria-hidden="false">
+          <div class="card">
+            <h3>Rápido</h3>
+            <p>Interacciones fluidas y formularios simples.</p>
+          </div>
+          <div class="card">
+            <h3>Seguro</h3>
+            <p>Prepara validaciones y manejo de sesiones para producción.</p>
+          </div>
+          <div class="card">
+            <h3>Responsive</h3>
+            <p>Diseño adaptado a móviles y escritorio.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3>Resumen</h3>
+        <div class="table" role="list">
+          <div class="row" role="listitem">
+            <div class="col-1">
+              <strong>10</strong>
+              <div style="color:var(--muted);font-size:13px">Carreras registradas</div>
+            </div>
+            <div class="badge">Activo</div>
+          </div>
+
+          <div class="row" role="listitem">
+            <div class="col-1">
+              <strong>3</strong>
+              <div style="color:var(--muted);font-size:13px">Pendientes de revisión</div>
+            </div>
+            <div class="badge">Revisión</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="footer">
+      <div>© <%= new Date().getFullYear() %> Movietime · Proyecto educativo</div>
+      <div style="font-size:13px;color:var(--muted)">Hecho con Node.js · EJS</div>
+    </footer>
+  </div>
+</body>
+</html>
