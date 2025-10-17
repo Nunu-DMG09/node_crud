@@ -1,0 +1,6 @@
+1. npm install
+2. npm mysql
+3. npm ej2
+4. npm express
+5. nodemon
+6. npm install -D tailwindcss postcss autoprefixer
