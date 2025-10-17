@@ -1,15 +1,18 @@
+const path = require('path');
 const express = require('express');
 const app = express();
 
-// MOTOR DE PLANTILLAS
+// Middlewares
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Vistas
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-// ENRUTADOR
-// EL CARACTER "/" REPRESENTA LA RAIZ DE TU WEB htpps://misitio.com/
-
+// Rutas
 app.use('/', require('./router'));
 
-// Crear servidor 
-app.listen(5000, () => {
-    console.log('Servidor corriendo en http://localhost:5000');
-});
+// Server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));
