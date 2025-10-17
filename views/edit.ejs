@@ -1,33 +1,80 @@
-<!-- ...existing code... -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Editar Carrera · Movietime</title>
-  <link rel="stylesheet" href="/css/estilos.css" />
+  <title>Editar Película · Movietime</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#fff;--muted:#6b7280;--accent-start:#f59e0b;--accent-end:#ef4444;--radius:12px;--shadow:0 12px 30px rgba(15,23,42,0.06);font-family:Inter,system-ui,Arial}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#eef2f7);color:#071024}
+    .wrap{max-width:820px;margin:40px auto;padding:20px}
+    .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px;border-radius:10px;background:linear-gradient(90deg,#111827,#0f172a);color:#fff;box-shadow:0 8px 30px rgba(2,6,23,0.12)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border:1px solid rgba(10,20,40,0.04);margin-top:22px}
+    .card .head{padding:26px;background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#fff}
+    .card .body{padding:24px}
+    label{display:block;font-weight:700;margin-bottom:8px;color:#0b1220;font-size:14px}
+    input[type=text], input[type=number], textarea{
+      width:100%;padding:12px 14px;border:1px solid #e6eef8;border-radius:10px;background:#fbfdff;font-size:14px;outline:none;
+    }
+    input:focus, textarea:focus{box-shadow:0 8px 24px rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.6)}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .controls{display:flex;gap:10px;margin-top:12px}
+    .btn{padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));color:#fff;box-shadow:0 8px 20px rgba(239,68,68,0.12)}
+    .btn-ghost{background:#f1f5f9;color:#0b1220;border:1px solid #e6eef8}
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+    @media (max-width:720px){ .row{grid-template-columns:1fr} .wrap{padding:12px} }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
+  <div class="wrap">
+    <header class="navbar">
       <div class="brand">
         <div class="logo">MT</div>
-        <div>
-          <h1>Editar Carrera</h1>
-          <div style="font-size:12px;color:var(--muted)">Modifica los datos de la carrera</div>
-        </div>
+        <div style="font-weight:800">Movietime</div>
       </div>
-      <nav class="nav">
-        <a href="/">Inicio</a>
-        <a href="/create">Crear</a>
-        <a href="/edit">Editar</a>
+      <nav>
+        <a href="/" style="color:rgba(255,255,255,0.9);font-weight:600;text-decoration:none">Inicio</a>
       </nav>
     </header>
 
-    <footer class="footer">
-      <div>© <%= new Date().getFullYear() %> Movietime</div>
-      <div style="font-size:13px;color:var(--muted)">No olvides validar en servidor</div>
-    </footer>
+    <main>
+      <div class="card">
+        <div class="head">
+          <h1 style="margin:0;font-size:20px">Editar película</h1>
+          <div style="margin-top:6px;opacity:.95">Actualiza la información y guarda</div>
+        </div>
+        <div class="body">
+          <form action="/update" method="post" novalidate>
+            <input type="hidden" name="id" value="<%= pelicula.id %>" />
+            <div style="margin-bottom:14px">
+              <label for="titulo">Título</label>
+              <input id="titulo" name="titulo" type="text" value="<%= pelicula.titulo %>" required />
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="duracion">Duración (min)</label>
+                <input id="duracion" name="duracion" type="number" min="1" max="600" value="<%= pelicula.duracion %>" required />
+              </div>
+              <div>
+                <label for="estreno">Año de estreno</label>
+                <input id="estreno" name="estreno" type="text" maxlength="4" value="<%= pelicula.estreno %>" required />
+              </div>
+            </div>
+
+            <div class="controls">
+              <button type="submit" class="btn btn-primary">Guardar cambios</button>
+              <a href="/" class="btn btn-ghost" style="display:inline-flex;align-items:center;justify-content:center">Cancelar</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <footer>© <%= new Date().getFullYear() %> Movietime</footer>
+    </main>
   </div>
 </body>
 </html>
