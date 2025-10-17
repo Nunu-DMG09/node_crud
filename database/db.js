@@ -5,8 +5,12 @@ const mysql= require('mysql2');
 const conexion = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Rakion2016123!',
-    database: 'movietime'
+    password: '',
+    database: 'movietime',
+     waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
+    charset: 'utf8mb4'
 });
 
 // ACTIVAR LA CONEXION
@@ -17,3 +21,5 @@ conexion.connect((error)=>{
     }
     console.log('La conexion se realizo correctamente');
 });
+
+module.exports = conexion;
